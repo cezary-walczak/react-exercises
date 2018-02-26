@@ -9,18 +9,17 @@ var TodoComponent = React.createClass({
         }
     },
     render() {
-        var ager = setTimeout(() => {
-            this.setState({
-                age: 35
-            })
-        }, 3000)
+        var todos = this.state.todos
+        todos = todos.map((item, index) => {
+            return(
+                <li>{item}</li>
+            )
+        })
         return(
             <div>
                 <p>{this.state.age}</p>
                 <ul>
-                    <li>{this.state.todos[0]}</li>
-                    <li>{this.state.todos[1]}</li>
-                    <li>{this.state.todos[2]}</li>
+                    {todos}
                 </ul>
                 {/* <ListComponent todos={this.state.todos}/> */}
             </div>
