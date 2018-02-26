@@ -2,16 +2,23 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 var TodoComponent = React.createClass({
+    getInitialState() {
+        return {
+            todos: ['wash up', 'eat something', 'take a nap']
+        }
+    },
     render() {
         return(
             <div>
-                <p>Ninja name: {this.props.ninja.name}</p>
-                <p>Ninja age: {this.props.ninja.age}</p>
-                <p>Ninja belt: {this.props.ninja.belt}</p>
+                <ul>
+                    <li>{this.state.todos[0]}</li>
+                    <li>{this.state.todos[1]}</li>
+                    <li>{this.state.todos[2]}</li>
+                </ul>
+                <ListComponent todos={this.state.todos}/>
             </div>
         )
     }
 })
-var Ninja = {name: 'Shaun', age: 27, belt: 'black'}
 
-ReactDOM.render(<TodoComponent ninja={Ninja}/>, document.getElementById('app'))
+ReactDOM.render(<TodoComponent/>, document.getElementById('app'))
