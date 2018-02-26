@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { link } from 'fs';
 
 var TodoComponent = React.createClass({
     getInitialState() {
@@ -12,7 +13,7 @@ var TodoComponent = React.createClass({
         var todos = this.state.todos
         todos = todos.map((item, index) => {
             return(
-                <li>{item}</li>
+                <TodoItem item={item} key={index}/>
             )
         })
         return(
@@ -24,6 +25,16 @@ var TodoComponent = React.createClass({
                 {/* <ListComponent todos={this.state.todos}/> */}
             </div>
         )
+    }
+})
+
+var TodoItem = React.createClass({
+    render() {
+        return(
+            <li>
+                <span className="item-name">{this.props.item}</span>
+            </li>
+        );
     }
 })
 
