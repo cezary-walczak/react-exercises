@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import indexStyle from '../css/index.css'
 
 import TodoItem from './todoItem'
+import AddItem from './addItem'
 
 var TodoComponent = React.createClass({
     getInitialState() {
@@ -23,7 +24,7 @@ var TodoComponent = React.createClass({
                 <ul>
                     {todos}
                 </ul>
-                {/* <ListComponent todos={this.state.todos}/> */}
+                <AddItem onAdd={this.onAdd}/>
             </div>
         )
     },
@@ -36,6 +37,13 @@ var TodoComponent = React.createClass({
         });
         this.setState({
           todos: updatedTodos
+        });
+    },
+    onAdd(item) {
+        var updatedTodos = this.state.todos
+        updatedTodos.push(item)
+        this.setState({
+            todos: updatedTodos
         });
     }
 })
