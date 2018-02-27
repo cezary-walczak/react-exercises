@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { link } from 'fs';
+import indexStyle from '../css/index.css'
+
+import TodoItem from './todoItem'
 
 var TodoComponent = React.createClass({
     getInitialState() {
@@ -35,20 +37,6 @@ var TodoComponent = React.createClass({
         this.setState({
           todos: updatedTodos
         });
-    }
-})
-
-var TodoItem = React.createClass({
-    render() {
-        return(
-            <li>
-                <span className="item-name">{this.props.item}</span>
-                <span className="item-delete" onClick={this.handleDelete}> x </span>
-            </li>
-        );
-    },
-    handleDelete() {
-        this.props.onDelete(this.props.item)
     }
 })
 
