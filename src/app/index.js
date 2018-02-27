@@ -1,9 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import {Router, Route, browserHistory, Link} from 'react-router'
 import indexStyle from '../css/index.css'
 
 import TodoItem from './todoItem'
 import AddItem from './addItem'
+import About from './about'
+
+var App = React.createClass({
+    render() {
+        return(
+            <Router history={browserHistory}>
+                <Route path={'/'} component={TodoComponent}></Route>
+                <Route path={'/about'} component={About}></Route>
+            </Router>
+        )
+    }
+})
 
 var TodoComponent = React.createClass({
     getInitialState() {
@@ -21,6 +34,7 @@ var TodoComponent = React.createClass({
         })
         return(
             <div>
+                <Link to={'/about'}>About</Link>
                 <ul>
                     {todos}
                 </ul>
@@ -57,4 +71,4 @@ var TodoComponent = React.createClass({
     }
 })
 
-ReactDOM.render(<TodoComponent/>, document.getElementById('app'))
+ReactDOM.render(<App/>, document.getElementById('app'))
